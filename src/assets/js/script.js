@@ -7,7 +7,17 @@ const contactForm = document.querySelector("#contact-form");
 const formStatus = document.querySelector("#form-status");
 const currentPage = document.body.dataset.page;
 const mainVisualVideo = document.querySelector(".main-visual-video");
+const usesMainVisualFallback =
+  Boolean(mainVisualVideo) &&
+  Boolean(window.CSS) &&
+  CSS.supports("-webkit-touch-callout", "none") &&
+  navigator.maxTouchPoints > 0;
 let videoFallbackEventsAttached = false;
+
+if (usesMainVisualFallback) {
+  mainVisualVideo.pause();
+  mainVisualVideo.remove();
+}
 
 function closeMenu() {
   if (!menuToggle || !navLinks) {
@@ -43,7 +53,7 @@ document.addEventListener("keydown", (event) => {
 });
 
 function prepareMainVisualVideo() {
-  if (!mainVisualVideo) {
+  if (!mainVisualVideo || usesMainVisualFallback) {
     return;
   }
 
@@ -71,7 +81,7 @@ function addVideoFallbackEvents() {
 }
 
 function playMainVisualVideo() {
-  if (!mainVisualVideo) {
+  if (!mainVisualVideo || usesMainVisualFallback) {
     return;
   }
 
@@ -93,7 +103,7 @@ window.addEventListener("DOMContentLoaded", playMainVisualVideo);
 window.addEventListener("load", playMainVisualVideo);
 window.addEventListener("pageshow", playMainVisualVideo);
 
-if (mainVisualVideo) {
+if (mainVisualVideo && !usesMainVisualFallback) {
   mainVisualVideo.addEventListener("loadedmetadata", playMainVisualVideo);
   mainVisualVideo.addEventListener("canplay", playMainVisualVideo);
   window.setTimeout(playMainVisualVideo, 300);

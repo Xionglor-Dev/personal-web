@@ -188,12 +188,14 @@ textarea {
 }
 
 .main-visual-video,
+.main-visual-fallback,
 .main-visual-overlay {
   position: absolute;
   inset: 0;
 }
 
-.main-visual-video {
+.main-visual-video,
+.main-visual-fallback {
   z-index: -2;
   width: 100%;
   height: 100%;
@@ -203,12 +205,39 @@ textarea {
   transform: translateZ(0);
 }
 
+.main-visual-fallback {
+  display: none;
+  animation: mainVisualPosterMove 13s ease-in-out infinite alternate;
+}
+
 .main-visual-video::-webkit-media-controls,
 .main-visual-video::-webkit-media-controls-panel,
 .main-visual-video::-webkit-media-controls-play-button,
 .main-visual-video::-webkit-media-controls-start-playback-button {
   display: none !important;
   -webkit-appearance: none;
+}
+
+@supports (-webkit-touch-callout: none) {
+  @media (hover: none) and (pointer: coarse) {
+    .main-visual-video {
+      display: none;
+    }
+
+    .main-visual-fallback {
+      display: block;
+    }
+  }
+}
+
+@keyframes mainVisualPosterMove {
+  from {
+    transform: scale(1.03) translate3d(-1%, 0, 0);
+  }
+
+  to {
+    transform: scale(1.1) translate3d(1%, -1%, 0);
+  }
 }
 
 .main-visual-overlay {

@@ -17,6 +17,7 @@ personal-web/
     │   ├── images/
     │   │   ├── favicon.png
     │   │   ├── icon.png
+    │   │   ├── main-visual-poster.png
     │   │   ├── social-facebook.svg
     │   │   ├── social-github.svg
     │   │   └── social-instagram.svg
