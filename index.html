@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Xiong-Dev</title>
+    <meta
+      name="description"
+      content="Personal portfolio home page for Xionglor Choua, a software developer from Laos working in Japan."
+    />
+    <link rel="icon" type="image/png" href="src/assets/images/favicon.png" />
+    <link rel="shortcut icon" type="image/png" href="src/assets/images/favicon.png" />
+    <link rel="stylesheet" href="src/assets/css/style.css" />
+  </head>
+  <body data-page="home">
+    <header class="site-header">
+      <nav class="navbar" aria-label="Main navigation">
+        <a class="logo" href="index.html" aria-label="Xionglor Choua home">
+          <img class="logo-icon" src="src/assets/images/icon.png" alt="" width="40" height="40" />
+          <span class="logo-name">Xionglor Choua</span>
+        </a>
+
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="primary-menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <ul class="nav-links" id="primary-menu">
+          <li><a href="index.html" data-page="home">Home</a></li>
+          <li><a href="src/pages/about.html" data-page="about">About</a></li>
+          <li><a href="src/pages/skills.html" data-page="skills">Skills</a></li>
+          <li><a href="src/pages/projects.html" data-page="projects">Projects</a></li>
+          <li><a href="src/pages/experience.html" data-page="experience">Experience</a></li>
+          <li><a href="src/pages/contact.html" data-page="contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero main-visual" id="home">
+        <video class="main-visual-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+          <source src="src/assets/videos/main-visual.mp4" type="video/mp4" />
+        </video>
+        <div class="main-visual-overlay"></div>
+
+        <div class="hero-content reveal">
+          <p class="eyebrow">Software Developer from Laos, working in Japan</p>
+          <h1>Xionglor Choua</h1>
+          <h2>Software Developer | Game Developer | AI &amp; Automation Enthusiast</h2>
+          <p class="hero-tagline">"Building software, games, and AI-powered solutions."</p>
+        </div>
+      </section>
+
+      <section class="section home-projects" aria-labelledby="home-projects-title">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Projects</p>
+          <h2 id="home-projects-title">Project preview</h2>
+        </div>
+
+        <div class="home-projects-grid">
+          <a class="project-card home-project-card reveal" href="src/pages/projects.html" aria-label="View Personal Portfolio Website project">
+            <div class="project-image portfolio-preview" aria-hidden="true">
+              <span>Portfolio</span>
+            </div>
+            <h3>Personal Portfolio Website</h3>
+          </a>
+
+          <a class="project-card home-project-card reveal" href="src/pages/projects.html" aria-label="View Flappy Bird Game project">
+            <div class="project-image flappy-preview" aria-hidden="true">
+              <span>Flappy Bird</span>
+            </div>
+            <h3>Flappy Bird Game</h3>
+          </a>
+
+          <a class="project-card home-project-card reveal" href="src/pages/projects.html" aria-label="View 2D Platformer Game project">
+            <div class="project-image platformer-preview" aria-hidden="true">
+              <span>Platformer</span>
+            </div>
+            <h3>2D Platformer Game</h3>
+          </a>
+
+          <a class="project-card home-project-card reveal" href="src/pages/projects.html" aria-label="View Java Chat App project">
+            <div class="project-image chat-preview" aria-hidden="true">
+              <span>Chat App</span>
+            </div>
+            <h3>Java Chat App</h3>
+          </a>
+
+          <a class="project-card home-project-card reveal" href="src/pages/projects.html" aria-label="View Calculator App project">
+            <div class="project-image calculator-preview" aria-hidden="true">
+              <span>Calculator</span>
+            </div>
+            <h3>Calculator App</h3>
+          </a>
+
+          <a class="project-card home-project-card reveal" href="src/pages/projects.html" aria-label="View To-Do List App project">
+            <div class="project-image todo-preview" aria-hidden="true">
+              <span>To-Do List</span>
+            </div>
+            <h3>To-Do List App</h3>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <section class="footer-links" aria-label="Social links">
+          <h2>Link</h2>
+          <span class="footer-rule"></span>
+          <a href="https://www.facebook.com/" target="_blank" rel="noreferrer">
+            <img class="footer-social-icon" src="src/assets/images/social-facebook.svg" alt="" width="24" height="24" />
+            <span>Facebook</span>
+          </a>
+          <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
+            <img class="footer-social-icon" src="src/assets/images/social-instagram.svg" alt="" width="24" height="24" />
+            <span>Instagram</span>
+          </a>
+          <a href="https://github.com/" target="_blank" rel="noreferrer">
+            <img class="footer-social-icon" src="src/assets/images/social-github.svg" alt="" width="24" height="24" />
+            <span>GitHub</span>
+          </a>
+        </section>
+
+        <section class="footer-brand" aria-label="Developer focus">
+          <h2>Xionglor Choua</h2>
+          <p>Web-Dev</p>
+          <p>Game-Dev</p>
+          <p>AI &amp; Automation</p>
+        </section>
+      </div>
+
+      <div class="footer-marquee" aria-label="Copyright and project list">
+        <div class="footer-marquee-track">
+          <span>&copy; 2026 Xionglor Choua</span>
+          <span>Personal Portfolio Website</span>
+          <span>Flappy Bird Game</span>
+          <span>2D Platformer Game</span>
+          <span>Java Chat App</span>
+          <span>Calculator App</span>
+          <span>To-Do List App</span>
+          <span>&copy; 2026 Xionglor Choua</span>
+          <span>Personal Portfolio Website</span>
+          <span>Flappy Bird Game</span>
+          <span>2D Platformer Game</span>
+          <span>Java Chat App</span>
+          <span>Calculator App</span>
+          <span>To-Do List App</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="src/assets/js/script.js"></script>
+  </body>
+</html>
