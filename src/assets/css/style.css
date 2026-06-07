@@ -199,6 +199,16 @@ textarea {
   height: 100%;
   object-fit: cover;
   pointer-events: none;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.main-visual-video::-webkit-media-controls,
+.main-visual-video::-webkit-media-controls-panel,
+.main-visual-video::-webkit-media-controls-play-button,
+.main-visual-video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+  -webkit-appearance: none;
 }
 
 .main-visual-overlay {

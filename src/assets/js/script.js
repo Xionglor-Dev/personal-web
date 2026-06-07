@@ -7,6 +7,7 @@ const contactForm = document.querySelector("#contact-form");
 const formStatus = document.querySelector("#form-status");
 const currentPage = document.body.dataset.page;
 const mainVisualVideo = document.querySelector(".main-visual-video");
+let videoFallbackEventsAttached = false;
 
 function closeMenu() {
   if (!menuToggle || !navLinks) {
@@ -41,7 +42,7 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-function playMainVisualVideo() {
+function prepareMainVisualVideo() {
   if (!mainVisualVideo) {
     return;
   }
@@ -49,19 +50,55 @@ function playMainVisualVideo() {
   mainVisualVideo.muted = true;
   mainVisualVideo.defaultMuted = true;
   mainVisualVideo.playsInline = true;
+  mainVisualVideo.autoplay = true;
+  mainVisualVideo.loop = true;
   mainVisualVideo.controls = false;
+  mainVisualVideo.setAttribute("muted", "");
+  mainVisualVideo.setAttribute("autoplay", "");
+  mainVisualVideo.setAttribute("playsinline", "");
+  mainVisualVideo.setAttribute("webkit-playsinline", "");
+  mainVisualVideo.removeAttribute("controls");
+}
+
+function addVideoFallbackEvents() {
+  if (videoFallbackEventsAttached) {
+    return;
+  }
+
+  videoFallbackEventsAttached = true;
+  document.addEventListener("touchstart", playMainVisualVideo, { once: true });
+  document.addEventListener("click", playMainVisualVideo, { once: true });
+}
+
+function playMainVisualVideo() {
+  if (!mainVisualVideo) {
+    return;
+  }
+
+  prepareMainVisualVideo();
 
   const playPromise = mainVisualVideo.play();
 
   if (playPromise) {
     playPromise.catch(() => {
-      document.addEventListener("touchstart", playMainVisualVideo, { once: true });
-      document.addEventListener("click", playMainVisualVideo, { once: true });
+      addVideoFallbackEvents();
     });
   }
 }
 
+prepareMainVisualVideo();
 playMainVisualVideo();
+
+window.addEventListener("DOMContentLoaded", playMainVisualVideo);
+window.addEventListener("load", playMainVisualVideo);
+window.addEventListener("pageshow", playMainVisualVideo);
+
+if (mainVisualVideo) {
+  mainVisualVideo.addEventListener("loadedmetadata", playMainVisualVideo);
+  mainVisualVideo.addEventListener("canplay", playMainVisualVideo);
+  window.setTimeout(playMainVisualVideo, 300);
+  window.setTimeout(playMainVisualVideo, 1000);
+}
 
 document.addEventListener("visibilitychange", () => {
   if (!document.hidden) {
