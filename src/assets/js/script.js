@@ -6,6 +6,7 @@ const sections = document.querySelectorAll("main section[id]");
 const contactForm = document.querySelector("#contact-form");
 const formStatus = document.querySelector("#form-status");
 const currentPage = document.body.dataset.page;
+const mainVisualVideo = document.querySelector(".main-visual-video");
 
 function closeMenu() {
   if (!menuToggle || !navLinks) {
@@ -37,6 +38,34 @@ navItems.forEach((link) => {
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && navLinks && navLinks.classList.contains("is-open")) {
     closeMenu();
+  }
+});
+
+function playMainVisualVideo() {
+  if (!mainVisualVideo) {
+    return;
+  }
+
+  mainVisualVideo.muted = true;
+  mainVisualVideo.defaultMuted = true;
+  mainVisualVideo.playsInline = true;
+  mainVisualVideo.controls = false;
+
+  const playPromise = mainVisualVideo.play();
+
+  if (playPromise) {
+    playPromise.catch(() => {
+      document.addEventListener("touchstart", playMainVisualVideo, { once: true });
+      document.addEventListener("click", playMainVisualVideo, { once: true });
+    });
+  }
+}
+
+playMainVisualVideo();
+
+document.addEventListener("visibilitychange", () => {
+  if (!document.hidden) {
+    playMainVisualVideo();
   }
 });
 

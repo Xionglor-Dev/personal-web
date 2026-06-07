@@ -45,7 +45,18 @@
 
     <main>
       <section class="hero main-visual" id="home">
-        <video class="main-visual-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+        <video
+          class="main-visual-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          webkit-playsinline
+          disablepictureinpicture
+          disableremoteplayback
+          preload="auto"
+          aria-hidden="true"
+        >
           <source src="src/assets/videos/main-visual.mp4" type="video/mp4" />
         </video>
         <div class="main-visual-overlay"></div>
